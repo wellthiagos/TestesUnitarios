@@ -1,16 +1,15 @@
-package br.ce.wcaquino.servicos;
+package br.well.thiagos.servicos;
 
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 import br.well.thiagos.exceptions.NaoPodeDivirPorZeroException;
-import br.well.thiagos.servicos.Calculadora;
 
 public class CalculadoraTest {
-	
+
 	private Calculadora calc;
-	
+
 	@Before
 	public void setup() {
 		calc = new Calculadora();
@@ -55,7 +54,7 @@ public class CalculadoraTest {
 		// verificacao
 		Assert.assertEquals(2, resultado);
 	}
-	
+
 	@Test(expected = NaoPodeDivirPorZeroException.class)
 	public void deveLancarExcecaoAoDividirPorZero() throws NaoPodeDivirPorZeroException {
 		// cenario

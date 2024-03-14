@@ -1,4 +1,4 @@
-package br.ce.wcaquino.builders;
+package br.well.thiagos.builders;
 
 import br.well.thiagos.entidades.Usuario;
 

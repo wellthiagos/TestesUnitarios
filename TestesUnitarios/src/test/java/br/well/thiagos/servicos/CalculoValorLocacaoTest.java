@@ -1,4 +1,4 @@
-package br.ce.wcaquino.servicos;
+package br.well.thiagos.servicos;
 
 import static org.hamcrest.CoreMatchers.is;
 
@@ -14,14 +14,13 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
 
-import br.ce.wcaquino.builders.FilmeBuilder;
-import br.ce.wcaquino.builders.UsuarioBuilder;
+import br.well.thiagos.builders.FilmeBuilder;
+import br.well.thiagos.builders.UsuarioBuilder;
 import br.well.thiagos.entidades.Filme;
 import br.well.thiagos.entidades.Locacao;
 import br.well.thiagos.entidades.Usuario;
 import br.well.thiagos.exceptions.FilmeSemEstoqueException;
 import br.well.thiagos.exceptions.LocadoraException;
-import br.well.thiagos.servicos.LocacaoService;
 
 @RunWith(Parameterized.class)
 public class CalculoValorLocacaoTest {

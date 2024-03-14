@@ -1,4 +1,4 @@
-package br.ce.wcaquino.suites;
+package br.well.thiagos.suites;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -6,9 +6,9 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
-import br.ce.wcaquino.servicos.CalculadoraTest;
-import br.ce.wcaquino.servicos.CalculoValorLocacaoTest;
-import br.ce.wcaquino.servicos.LocacaoServiceTest;
+import br.well.thiagos.servicos.CalculadoraTest;
+import br.well.thiagos.servicos.CalculoValorLocacaoTest;
+import br.well.thiagos.servicos.LocacaoServiceTest;
 
 @RunWith(Suite.class)
 @SuiteClasses({

@@ -1,4 +1,4 @@
-package br.ce.wcaquino.servicos;
+package br.well.thiagos.servicos;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
@@ -17,15 +17,14 @@ import org.junit.Test;
 import org.junit.rules.ErrorCollector;
 import org.junit.rules.ExpectedException;
 
-import br.ce.wcaquino.builders.FilmeBuilder;
-import br.ce.wcaquino.builders.UsuarioBuilder;
-import br.ce.wcaquino.matchers.MatchersProprios;
+import br.well.thiagos.builders.FilmeBuilder;
+import br.well.thiagos.builders.UsuarioBuilder;
 import br.well.thiagos.entidades.Filme;
 import br.well.thiagos.entidades.Locacao;
 import br.well.thiagos.entidades.Usuario;
 import br.well.thiagos.exceptions.FilmeSemEstoqueException;
 import br.well.thiagos.exceptions.LocadoraException;
-import br.well.thiagos.servicos.LocacaoService;
+import br.well.thiagos.matchers.MatchersProprios;
 import br.well.thiagos.utils.DataUtils;
 import buildermaster.BuilderMaster;
 
