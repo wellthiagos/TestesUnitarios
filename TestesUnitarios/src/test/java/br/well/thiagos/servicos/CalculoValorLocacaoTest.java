@@ -13,9 +13,11 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
+import org.mockito.Mockito;
 
 import br.well.thiagos.builders.FilmeBuilder;
 import br.well.thiagos.builders.UsuarioBuilder;
+import br.well.thiagos.dao.LocacaoDAO;
 import br.well.thiagos.entidades.Filme;
 import br.well.thiagos.entidades.Locacao;
 import br.well.thiagos.entidades.Usuario;
@@ -39,6 +41,8 @@ public class CalculoValorLocacaoTest {
 	@Before
 	public void setup() {
 		service = new LocacaoService();
+		LocacaoDAO dao = Mockito.mock(LocacaoDAO.class);
+		service.setLocacaoDAO(dao);
 	}
 	
 	private static Filme filme1 = FilmeBuilder.umFilme().agora();
