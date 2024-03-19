@@ -17,6 +17,7 @@ import br.well.thiagos.utils.DataUtils;
 public class LocacaoService {
 	
 	private LocacaoDAO dao;
+	private SPCService spcService;
 
 	public Locacao alugarFilme(Usuario usuario, List<Filme> filmes) throws FilmeSemEstoqueException, LocadoraException {
 
@@ -30,7 +31,11 @@ public class LocacaoService {
 			if (filme.getEstoque().equals(0))
 				throw new FilmeSemEstoqueException();
 		}
-
+		
+		if(spcService.possuiNegativacao(usuario)) {
+			throw new LocadoraException("Usuário Negativado");
+		}
+			
 		Locacao locacao = new Locacao();
 		locacao.setFilmes(filmes);
 		locacao.setUsuario(usuario);
@@ -70,5 +75,9 @@ public class LocacaoService {
 	
 	public void setLocacaoDAO(LocacaoDAO dao) {
 		this.dao = dao; 
+	}
+	
+	public void setSPCService(SPCService spcService) {
+		this.spcService = spcService;
 	}
 }

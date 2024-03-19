@@ -28,11 +28,12 @@ import br.well.thiagos.exceptions.FilmeSemEstoqueException;
 import br.well.thiagos.exceptions.LocadoraException;
 import br.well.thiagos.matchers.MatchersProprios;
 import br.well.thiagos.utils.DataUtils;
-import buildermaster.BuilderMaster;
 
 public class LocacaoServiceTest {
 
 	private LocacaoService service;
+	private SPCService spc;
+	private LocacaoDAO dao;
 
 	@Rule
 	public ErrorCollector error = new ErrorCollector();
@@ -43,8 +44,10 @@ public class LocacaoServiceTest {
 	@Before
 	public void setup() {
 		service = new LocacaoService();
-		LocacaoDAO dao = Mockito.mock(LocacaoDAO.class);
+		dao = Mockito.mock(LocacaoDAO.class);
 		service.setLocacaoDAO(dao);
+		spc = Mockito.mock(SPCService.class);
+		service.setSPCService(spc);
 	}
 
 	@Test
@@ -221,7 +224,18 @@ public class LocacaoServiceTest {
 	 * // ação service.alugarFilme(usuario, filme); }
 	 */
 	
-	public static void main(String[] args) {
-		new BuilderMaster().gerarCodigoClasse(Locacao.class);
+	@Test
+	public void naoDeveAlugarFilmeParaNegativadoSPC() throws FilmeSemEstoqueException, LocadoraException {
+		//cenario
+		Usuario usuario = UsuarioBuilder.umUsuario().agora();
+		List<Filme> filmes = Arrays.asList(FilmeBuilder.umFilme().agora());
+		
+		Mockito.when(spc.possuiNegativacao(usuario)).thenReturn(true);
+		
+		exception.expect(LocadoraException.class);
+		exception.expectMessage("Usuário Negativado");
+		
+		//acao
+		service.alugarFilme(usuario, filmes);
 	}
 }
